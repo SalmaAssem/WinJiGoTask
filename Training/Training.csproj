@@ -1,0 +1,881 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D459B857-EB29-417F-A9D6-424922F55613}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Training</RootNamespace>
+    <AssemblyName>Training</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Automation.Utilities">
+      <HintPath>.\Automation.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.2.3.9\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.10\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.9.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="WebDriver, Version=3.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriver.3.9.1\lib\net45\WebDriver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebDriver.Support, Version=3.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.Support.3.9.1\lib\net45\WebDriver.Support.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="APIs\Courses_APIs.cs" />
+    <Compile Include="APIs\Users_APIs.cs" />
+    <Compile Include="APIs\Subjects_APIs.cs" />
+    <Compile Include="APIs\Grades_APIs.cs" />
+    <Compile Include="APIs\Sessions_APIs.cs" />
+    <Compile Include="Contexts\CourseJoiningTypes.cs" />
+    <Compile Include="Contexts\CourseTypes.cs" />
+    <Compile Include="Generated\AlbumApi.cs" />
+    <Compile Include="Generated\AlbumApiExtensions.cs" />
+    <Compile Include="Generated\AnmmarApi.cs" />
+    <Compile Include="Generated\AnmmarApiExtensions.cs" />
+    <Compile Include="Generated\AnnouncementApi.cs" />
+    <Compile Include="Generated\AnnouncementApiExtensions.cs" />
+    <Compile Include="Generated\AssessmentsMessages.cs" />
+    <Compile Include="Generated\AssessmentsMessagesExtensions.cs" />
+    <Compile Include="Generated\AttendanceApi.cs" />
+    <Compile Include="Generated\AttendanceApiExtensions.cs" />
+    <Compile Include="Generated\AuthorizationApi.cs" />
+    <Compile Include="Generated\AuthorizationApiExtensions.cs" />
+    <Compile Include="Generated\BadgeApi.cs" />
+    <Compile Include="Generated\BadgeApiExtensions.cs" />
+    <Compile Include="Generated\BehaviourApi.cs" />
+    <Compile Include="Generated\BehaviourApiExtensions.cs" />
+    <Compile Include="Generated\CalendarApi.cs" />
+    <Compile Include="Generated\CalendarApiExtensions.cs" />
+    <Compile Include="Generated\CertificateApi.cs" />
+    <Compile Include="Generated\CertificateApiExtensions.cs" />
+    <Compile Include="Generated\ClassApi.cs" />
+    <Compile Include="Generated\ClassApiExtensions.cs" />
+    <Compile Include="Generated\ConfigurationMangerApi.cs" />
+    <Compile Include="Generated\ConfigurationMangerApiExtensions.cs" />
+    <Compile Include="Generated\CopyApi.cs" />
+    <Compile Include="Generated\CopyApiExtensions.cs" />
+    <Compile Include="Generated\CourseApi.cs" />
+    <Compile Include="Generated\CourseApiExtensions.cs" />
+    <Compile Include="Generated\CourseCatalogueApi.cs" />
+    <Compile Include="Generated\CourseCatalogueApiExtensions.cs" />
+    <Compile Include="Generated\CourseGroupAuthors.cs" />
+    <Compile Include="Generated\CourseGroupAuthorsExtensions.cs" />
+    <Compile Include="Generated\CourseImageApi.cs" />
+    <Compile Include="Generated\CourseImageApiExtensions.cs" />
+    <Compile Include="Generated\CourseRequestsApi.cs" />
+    <Compile Include="Generated\CourseRequestsApiExtensions.cs" />
+    <Compile Include="Generated\CoursesProgress.cs" />
+    <Compile Include="Generated\CoursesProgressExtensions.cs" />
+    <Compile Include="Generated\DiscussionApi.cs" />
+    <Compile Include="Generated\DiscussionApiExtensions.cs" />
+    <Compile Include="Generated\EduShareApi.cs" />
+    <Compile Include="Generated\EduShareApiExtensions.cs" />
+    <Compile Include="Generated\EvaluationApi.cs" />
+    <Compile Include="Generated\EvaluationApiExtensions.cs" />
+    <Compile Include="Generated\EventApi.cs" />
+    <Compile Include="Generated\EventApiExtensions.cs" />
+    <Compile Include="Generated\FileApi.cs" />
+    <Compile Include="Generated\FileApiExtensions.cs" />
+    <Compile Include="Generated\FormsTemplatesApi.cs" />
+    <Compile Include="Generated\FormsTemplatesApiExtensions.cs" />
+    <Compile Include="Generated\GradeApi.cs" />
+    <Compile Include="Generated\GradeApiExtensions.cs" />
+    <Compile Include="Generated\GradeBookApi.cs" />
+    <Compile Include="Generated\GradeBookApiExtensions.cs" />
+    <Compile Include="Generated\HelpApi.cs" />
+    <Compile Include="Generated\HelpApiExtensions.cs" />
+    <Compile Include="Generated\IAlbumApi.cs" />
+    <Compile Include="Generated\IAnmmarApi.cs" />
+    <Compile Include="Generated\IAnnouncementApi.cs" />
+    <Compile Include="Generated\IAssessmentsMessages.cs" />
+    <Compile Include="Generated\IAttendanceApi.cs" />
+    <Compile Include="Generated\IAuthorizationApi.cs" />
+    <Compile Include="Generated\IBadgeApi.cs" />
+    <Compile Include="Generated\IBehaviourApi.cs" />
+    <Compile Include="Generated\ICalendarApi.cs" />
+    <Compile Include="Generated\ICertificateApi.cs" />
+    <Compile Include="Generated\IClassApi.cs" />
+    <Compile Include="Generated\IConfigurationMangerApi.cs" />
+    <Compile Include="Generated\ICopyApi.cs" />
+    <Compile Include="Generated\ICourseApi.cs" />
+    <Compile Include="Generated\ICourseCatalogueApi.cs" />
+    <Compile Include="Generated\ICourseGroupAuthors.cs" />
+    <Compile Include="Generated\ICourseImageApi.cs" />
+    <Compile Include="Generated\ICourseRequestsApi.cs" />
+    <Compile Include="Generated\ICoursesProgress.cs" />
+    <Compile Include="Generated\IDiscussionApi.cs" />
+    <Compile Include="Generated\IEduShareApi.cs" />
+    <Compile Include="Generated\IenApi.cs" />
+    <Compile Include="Generated\IenApiExtensions.cs" />
+    <Compile Include="Generated\IEvaluationApi.cs" />
+    <Compile Include="Generated\IEventApi.cs" />
+    <Compile Include="Generated\IFileApi.cs" />
+    <Compile Include="Generated\IFormsTemplatesApi.cs" />
+    <Compile Include="Generated\IGradeApi.cs" />
+    <Compile Include="Generated\IGradeBookApi.cs" />
+    <Compile Include="Generated\IHelpApi.cs" />
+    <Compile Include="Generated\IIenApi.cs" />
+    <Compile Include="Generated\IInvitationApi.cs" />
+    <Compile Include="Generated\IInviteApi.cs" />
+    <Compile Include="Generated\ILanguageApi.cs" />
+    <Compile Include="Generated\ILearningObjectivesApi.cs" />
+    <Compile Include="Generated\ILearningPathApi.cs" />
+    <Compile Include="Generated\ILMSWebCore.cs" />
+    <Compile Include="Generated\ILTILMSConsumerApi.cs" />
+    <Compile Include="Generated\IMaterialApi.cs" />
+    <Compile Include="Generated\IMaterialSeenByUser.cs" />
+    <Compile Include="Generated\IMembersApi.cs" />
+    <Compile Include="Generated\IMentorApi.cs" />
+    <Compile Include="Generated\INotificationsApi.cs" />
+    <Compile Include="Generated\InvitationApi.cs" />
+    <Compile Include="Generated\InvitationApiExtensions.cs" />
+    <Compile Include="Generated\InviteApi.cs" />
+    <Compile Include="Generated\InviteApiExtensions.cs" />
+    <Compile Include="Generated\IOfferApi.cs" />
+    <Compile Include="Generated\IOffice365.cs" />
+    <Compile Include="Generated\IOfficeAddInApi.cs" />
+    <Compile Include="Generated\IOnenote.cs" />
+    <Compile Include="Generated\IOrganizationUserAPI.cs" />
+    <Compile Include="Generated\IOutcomesApi.cs" />
+    <Compile Include="Generated\IPointsApi.cs" />
+    <Compile Include="Generated\IPollApi.cs" />
+    <Compile Include="Generated\IPrerequisitesApi.cs" />
+    <Compile Include="Generated\IQtiInteroperability.cs" />
+    <Compile Include="Generated\IQuestionBankApi.cs" />
+    <Compile Include="Generated\IReflectionApi.cs" />
+    <Compile Include="Generated\IRelatedCoursesApi.cs" />
+    <Compile Include="Generated\IReportApi.cs" />
+    <Compile Include="Generated\IRoleManagementApi.cs" />
+    <Compile Include="Generated\IScheduleVisitApi.cs" />
+    <Compile Include="Generated\ISchoolTypeApi.cs" />
+    <Compile Include="Generated\ISessionApi.cs" />
+    <Compile Include="Generated\ISpaceApi.cs" />
+    <Compile Include="Generated\IStudentApi.cs" />
+    <Compile Include="Generated\ISubjectApi.cs" />
+    <Compile Include="Generated\ISystemAdministrationApi.cs" />
+    <Compile Include="Generated\ISystemReportsApi.cs" />
+    <Compile Include="Generated\ITagsApi.cs" />
+    <Compile Include="Generated\IThemes.cs" />
+    <Compile Include="Generated\ITimeTableApi.cs" />
+    <Compile Include="Generated\IToolConsumerProfileApi.cs" />
+    <Compile Include="Generated\ITourApi.cs" />
+    <Compile Include="Generated\ITrackApi.cs" />
+    <Compile Include="Generated\ITrainingPlanApi.cs" />
+    <Compile Include="Generated\IUserApi.cs" />
+    <Compile Include="Generated\IUserProfileApi.cs" />
+    <Compile Include="Generated\IUserProgressApi.cs" />
+    <Compile Include="Generated\IUserSettingsApi.cs" />
+    <Compile Include="Generated\IWallApi.cs" />
+    <Compile Include="Generated\LanguageApi.cs" />
+    <Compile Include="Generated\LanguageApiExtensions.cs" />
+    <Compile Include="Generated\LearningObjectivesApi.cs" />
+    <Compile Include="Generated\LearningObjectivesApiExtensions.cs" />
+    <Compile Include="Generated\LearningPathApi.cs" />
+    <Compile Include="Generated\LearningPathApiExtensions.cs" />
+    <Compile Include="Generated\LMSWebCore.cs" />
+    <Compile Include="Generated\LTILMSConsumerApi.cs" />
+    <Compile Include="Generated\LTILMSConsumerApiExtensions.cs" />
+    <Compile Include="Generated\MaterialApi.cs" />
+    <Compile Include="Generated\MaterialApiExtensions.cs" />
+    <Compile Include="Generated\MaterialSeenByUser.cs" />
+    <Compile Include="Generated\MaterialSeenByUserExtensions.cs" />
+    <Compile Include="Generated\MembersApi.cs" />
+    <Compile Include="Generated\MembersApiExtensions.cs" />
+    <Compile Include="Generated\MentorApi.cs" />
+    <Compile Include="Generated\MentorApiExtensions.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreAssignCourseSearchCrieteria.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreAssignLearnerCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsActivateSessionCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsAddCourseCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsAddCourseGroupCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsAddEditBadgeCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsAddEditUserProfilePictureCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsAddUpdateCustomeRoleCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsAddUpdateSpaceCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsAnmarFeedbackCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsApproveSessionCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsAssessmentActivityEditCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsAssessmentActivityScoresCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsAssessmentAssessment.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsAssessmentAssessmentMessagesAssessmentAttributes.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsAssessmentAssessmentMessagesAssessmentIncomingMessage.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsAssessmentAssessmentMessagesAssessmentResponseCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsAssessmentGradeActivityCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsAssignBadgeCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsAttendancesSaveSessionAttendanceCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsAttendancesSaveStudentSessionAttendanceCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsAttendancesSaveUserAttendanceCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsAttendanceStatusAddCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsAuthorCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsCalendarGetEventsCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsCertificateAddEditCertificateCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsCertificateAddSignatureCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsCertificateEditSignatureCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsChangeEmailCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsChangeMemberRoleCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsContextLastViewedMaterialCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsCopyActivityCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsCopyActivitySessionCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsCopyFileCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsCopyMaterialCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsCopySessionCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsCopySessionsCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsCourseGroupAuthorCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsCourseGroupAuthorsCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsCourseRequestCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsCreateAnnouncmentCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsCreateLiveLectureCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsCreateOrganizationWithAdminCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsCreateTemplateCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsDeactivateSessionCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsDeleteCommentCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsDeleteCourseCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsDeleteCourseGroupCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsDeleteMaterialCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsDeletePostCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsDeleteTenantSchoolCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsDiscussionDeleteReplyCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsDiscussionEditReplyCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsDiscussionReplyAddCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsEditAboutCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsEditCommentCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsEditObjectiviesCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsEportfolioAddCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsEventAddEditCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsEventDeleteCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsEventsListCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsGetMembersCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsGradeBookAddCourseCategoryCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsGradeBookAddGrabableItemStudentsScoresCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsGradeBookAddUpdateGradableItemCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsGradeBookAddUpdateGradeCategoryCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsGradeBookDeleteGradableItemCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsGradeBookDeleteGradeCategoryCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsGradeBookGradableItemCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsGradeBookGradeCategoryCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsGradeBookStudentsScoresCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsGradeBookUpdateStudentGradableItemScoreCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsGradeBookUpdateUserScoresCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsIenSearchQuestionsCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsInvitationCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsInviteCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsJoinCourseCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsLearnerUserProfileUpdateCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsLearningObjectiveCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsLearningPathThemCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsLeaveCourseCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsMaterialAddCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsMaterialCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsMaterialOrderCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsMaterialPublishCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsMentorCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsMoveTenantSchoolCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsNotiificationsActivitySubmitCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsNotiificationsGradeChangedCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsNotiificationsNotificationSeenCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsOffice365ActivateDeactivateUserCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsOffice365ChangeUsersRoleCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsOffice365CreateOffice365GroupCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsOffice365O365TenantInformationCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsOffice365Office365AddTenantSchoolCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsOffice365ReCreateOffice365GroupCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsOffice365TenantProvisionedAdminsCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsOffice365TenantProvisionedUsersCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsOffice365UpdateTenantSchoolCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsOfficeAddInCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsOfficeAddInOfficeAddInSubmitHandOutCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsOneDriveFileCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsPollChoiceAddCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsPostCommentAddCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsPrerequisitesCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsProfileBasicInfoUpdateCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsProfilePictureUpdateCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsPushCourseGroupsCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsQuestionBankBankAddUpdateBankCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsQuestionBankBankBankGradeCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsQuestionBankBankBankSubjectCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsQuestionBankQuestionAddUpdateQuestionCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsReflectionReflectionCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsRemoveFilesMaterialCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsResumeVideoCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsScheduleVisitCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSeatingChartSeatingChartAddUpdateCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSeatingChartStudentSeatingChartUpdateCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSessionAddCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSessionDeleteCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSessionLessonPlanCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSessionOrderCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSessionOrderViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSessionsOrderCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSpaceAddEditAlbum.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSpaceAddEditResourcesFolder.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSpaceAddMembersCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSpaceUserSpaceModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSystemReportsActivitiesReportCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSystemReportsAttendanceReportCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSystemReportsBadgesReportCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSystemReportsBehaviourReportCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSystemReportsCollaborationReportCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSystemReportsCoursesReportCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSystemReportsCoursesStatisitcsReportCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSystemReportsCourseTraineesReportCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSystemReportsInsightsSummaryCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSystemReportsOverAllReportCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSystemReportsParentReportCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSystemReportsQuizzesReportCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSystemReportsSchoolReportCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSystemReportsSessionsReportReportCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSystemReportsSessionsReportSessionReportCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSystemReportsTeachersReportCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSystemReportsTopReportCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSystemReportsTraineeCoursesReportCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSystemReportsTraineeReportCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSystemReportsTraineesReportCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSystemReportsTraineesStatisticsReportCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsSystemReportsTraineeStatisticsReportCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsTagsCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsTeachingUserProfileUpdateCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsTourAddTourPageUserCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsTrackAddDeleteCourseToTrackCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsTrackAddEditTrackCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsUnmapLearningObjectiveCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsUpdateActivityCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsUpdateBadgePointsCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsUpdateCourseGroupCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsUpdateCourseProgressCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsUpdateMaterialCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsUpdateSessionCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsUserEvaluationCommad.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsUserEvaluationTemplateCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsUserPrivacyUpdateCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsUserProfileUpdateCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsWallPostAddCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreCommandsWallPostEditCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCorePermissionsGroup.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreRatingCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreSearchLearnerCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreTrackAssignLearnerCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreUpdateCourseCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAddEditSpaceViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAddSessionReminderViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAddUpdateCustomRoleViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAddUpdateGradeViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAddUpdateSubjectViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAnmarTicket.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAssessmentActivityBlocksViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAssessmentActivityDataViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAssessmentActivityResponseViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAssessmentActivityScoresViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAssessmentAssessmentTrial.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAssessmentAttributes.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAssessmentLearnerActivitiesProgressSummaryViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAssessmentNotGradedViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAssessmentUpcomingActivitiesViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAssignAllLearnersCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAssignLearnerViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAssignViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAttendanceCountData.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAttendanceCourseViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAttendancePerDayViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAttendanceSessionViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAttendanceStatusBasicInfo.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAttendanceStatusViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAttendanceViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAttendanceWithStatusViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAuthorViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelAwardViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelBadgeActivityBadgeViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelBadgeAwardingHistory.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelBadgeBadgePackViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelBadgeBadgesListViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelBadgeBadgeSummaryViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelBadgePackCategoryViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelBadgeSystemBadgesViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelBadgeViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelBaseMaterialTypes.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelBehaviourReasonDetails.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelBehaviourReasonsWithLevels.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCalendarEventViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCertificateBaseCertificateViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCertificateCertificateImagesDataViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCertificateCertificateViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCertificateMyCertificatesViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCertificateSignatureViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCertificateUserCertificateViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelChartPointViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelChildBasicData.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelClassViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCommentViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelContextTagsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelContextViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCopyContextsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCopyContextViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCourseAboutViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCourseBasicInfo.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCourseCopyViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCourseCoverInfoViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCourseGroupCopyViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCourseGroupToPushViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCourseGroupViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCourseInfoViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCourseInvitationsListViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCourseInvitationViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCourseLearnersViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCourseLearningObjectiveViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCourseMembersViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCoursePinViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCourseRatingViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCourseStudentAwardsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCourseStudentsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCourseViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelCustomReportsCustomReportViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelDiscussionInformationViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelDiscussionRepliesViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelDiscussionReplyViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelEvaluationCycleCreditHoursViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelEvaluationCycleViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelEvaluationUserEvaluationsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelEventEventsListViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelEventEventViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelGradeBookCourseGradableItemStudentsScores.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelGradeBookGradableItemViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelGradeBookGradeBookInfo.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelGradeBookGradeBookViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelGradeBookGradeCategoryViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelGradeBookKeyValuePair.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelGradeBookUserGradableItemViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelGradeBookUserGradeBookInfo.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelGradeBookUserGradeBooks.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelGradeBookUserGradeCategoryVieModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelGradeBookUserScoreSheetViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelGradeCreditHoursViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelIenIenSearchRequestCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelInstructorBasicViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelInstructorViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelInvitationsCreatorViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelInvitationsTrackInvitationViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelInvitationsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelJoinCourseViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelLeaderboardLevelViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelLearnerBasicInfo.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelLearningObjectiveViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelLearningPathLearnerMaterialViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelLearningPathLearningPathMaterialViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelLearningPathLearningPathSessionViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelLearningPathLearningPathThemeViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelLearningPathLearningPathViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelLearningPathSessionLearnersViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelMaterialDetailsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelMaterialSeenByViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelMaterialTypeViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelNotificationViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelOffice365CreateTenantViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelOffice365GroupsListModelView.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelOffice365ManageGradeViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelOffice365ManageSubjectViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelOffice365O365AcademiccordinatorTenantSchoolInfoViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelOffice365O365LogoInformation.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelOffice365O365ProvisionedUsersErrorsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelOffice365O365TenantBasicViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelOffice365O365TenantInformationViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelOffice365O365TenantSchoolBasicInfo.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelOffice365O365TenantSchoolInfoViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelOffice365O365TenantSchoolsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelOffice365O365TenantUsersListViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelOffice365O365TenantUsersViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelOffice365O365UserBasicInfo.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelOffice365SchoolBasicInfoViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelOfficeAddInOfficeAddInActivityViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelOfficeAddInSettingsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelOrganizationSchoolMinimalViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelOrganizationViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelParentInfo.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelParentsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelPendingCourseRequestViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelPendingInvitationsAndRequestsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelPhotoAlbumDeletePhotoViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelPhotoAlbumPhotoAlbumViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelPhotoAlbumPhotoViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelPointsLeaderboardUserViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelPointsLeaderboardViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelPointsUserPointsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelPollPollChoiceSummaryViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelPollPollChoiceViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelPollPollerViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelPollUserPollViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelPostCommentsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelPostsListViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelPostViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelPrerequisitesViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelPushCourseGroupViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelQuestionBankBankBankDetailsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelQuestionBankBankBankViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelQuestionBankBankGradesSubjectsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelQuestionBankBankGradeViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelQuestionBankBankSubjectAreaViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelQuestionBankQuestionImportQuestionViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelQuestionBankQuestionQuestionViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelReasonDetails.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelReflectionReflectionUsersViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelReflectionReflectionViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelRelatedCoursesViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelReportCourseInfoReportViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelReportCourseOverViewReportViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelReportCourseReportViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelReportInitialCourseInfoReportViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelReportOverallReportViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelReportUsageReportViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelRoleCategoryViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelRoleLevelViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelRoleManagementViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelRoleViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelRoundDetailsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelRoundRoundTeacherViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelRoundSessionsDataViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSaveDayAttendanceCommand.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelScheduleVisitViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSchoolInfo.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSchoolViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSessionAttendanceViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSessionBasicViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSessionDetailsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSessionLessonPlanViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSessionMainData.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSessionUsersDetailsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSessionViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSpaceDeleteContainerViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSpaceMemberViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSpaceSpaceFolderViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSpaceSpacePhotoViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSpaceSpacePhotoViewModelSpaceAlbum.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSpaceSpacePhotoViewModelSpacePhoto.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSpaceSpaceViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelStudentAttendenceViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelStudentSessionAttendanceViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelStudentsLearnerAssessmentViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelStudentsStudentBadgeViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelStudentsStudentCourseDetailsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelStudentsStudentCourseViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelStudentsStudentViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSubordinateViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsActivitiesReportViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsAssessmentProgress.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsAttendanceProgressViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsBadgeInfo.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsBadgesPieViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsBehaviourSummaryViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsCollaborationReportCollaborationReportViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsCourseGroupVisitedViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsInsightsSummaryViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsLearningObjectiveReportViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsParentReportChildViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsParentReportParentViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsQuizzesReportViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsReportStatisticsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsSessionsReportSessionsReportSummaryViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsStatusViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsSubjectAreaCoursesViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsSubjectsReportSubjectClassesViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsSubjectsReportSubjectsReportViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsTeacherInfoViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsTeacherReportCourseReportInfo.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsTeacherReportTeacherViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsTeachersViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsTeacherViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsTopReportViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsTopSubjectAreaViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsTopVisitedCourseGroupSubjectViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsTopVisitedViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsTraineeGridViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsTraineeOverAllViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsTraineeProgressViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsTraineesAllActivitiesProgressViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsTraineesProgressViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsTraineesStatisticsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsTraineesStatusViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsTraineeStatisticsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsTraineesTopGrades.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelSystemReportsUserViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelTeacherDetails.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelTimeTableLectureInfoViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelTimeTableTimeTableDays.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelTimeTableTimeTableInfo.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelTimeTableTimeTableMobileViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelTimeTableTimeTableViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelTotalBehaviour.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelTourPagesListViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelTourPageViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelTrackCourseViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelTrackMyTrackCoursesViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelTrackTrackViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelTrackUserTracksViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelTrainingPlanCourseViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelTranslationViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelUpdateCourseViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelUpdatedSessionLessonPlanViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelUserBadgeViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelUserBasicInfoViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelUserCourseViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelUserCreditHoursViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelUserInformation.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelUserProfileActivitiesViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelUserProfileBasicInfoViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelUserProfileContactInfoViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelUserProfileInterestsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelUserProfilePersonalInfoViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelUserProfileUserAchievementsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelUserProfileUserHierarchy.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelUserProgressListViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelUserProgressViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelUserSettingsViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelUserTrainingPlanViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelUserViewModel.cs" />
+    <Compile Include="Generated\Models\LMSApplicationCoreViewModelVoiceNoteViewModel.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsAttendancesAttendanceStatus.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsAttendancesOrganizationSchoolAttendanceStatus.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsBadgesBadge.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsBadgesBadgePack.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsBadgesSystemBadgePoints.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsClass.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsCountry.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsCourse.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsCourseGroup.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsCourseImage.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsCourseView.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsFileData.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsGrade.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsHelpFilesHelpCategory.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsHelpFilesHelpContent.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsHelpFilesHelpRoleCategory.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsInstructor.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsLanguage.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsLearner.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsLearningObjective.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsMaterialsDiscussion.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsMaterialsMaterial.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsMaterialsMaterialType.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsMaterialsPollChoice.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsMaterialsUserPollChoice.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsMember.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsMemberCourse.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsMentorshipMenteeViewModel.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsMentorshipMentorInfoViewModel.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsOffice365Organization.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsOffice365OrganizationSchool.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsOffice365OrganizationSchoolType.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsOffice365OrganizationUser.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsRole.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsRoundBaseViewModel.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsSchool.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsSession.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsSpacesSpaceArea.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsSubjectArea.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsTheme.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsTitle.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsTourPage.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsTourStep.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsUser.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsUserPrivacy.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsUserProfile.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsUserRoleInfo.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreModelsUserSpacesView.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreViewModelsAnnouncementViewModel.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreViewModelsFormTemplateViewModel.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreViewModelsTopVisitedCourseGroup.cs" />
+    <Compile Include="Generated\Models\LMSDomainCoreViewModelsTopVisitedCourseGroupSubject.cs" />
+    <Compile Include="Generated\Models\LMSInfrastructureOffice365ContractsGroup.cs" />
+    <Compile Include="Generated\Models\LMSInfrastructureOffice365ContractsTeacher.cs" />
+    <Compile Include="Generated\Models\LMSInfrastructureOffice365ContractsUser.cs" />
+    <Compile Include="Generated\Models\LMSWebCoreAPICurrentUserInfo.cs" />
+    <Compile Include="Generated\Models\LMSWebCoreViewModelsAddEditCourseViewModel.cs" />
+    <Compile Include="Generated\Models\LMSWebCoreViewModelsGradeDetailsViewModel.cs" />
+    <Compile Include="Generated\Models\LtiLibraryAspNetLti1LtiRequestViewModel.cs" />
+    <Compile Include="Generated\Models\LtiLibraryCoreOutcomesv1imsxPOXBodyType.cs" />
+    <Compile Include="Generated\Models\LtiLibraryCoreOutcomesv1imsxPOXEnvelopeType.cs" />
+    <Compile Include="Generated\Models\LtiLibraryCoreOutcomesv1imsxPOXHeaderType.cs" />
+    <Compile Include="Generated\Models\SystemCollectionsGenericKeyValuePairSystemStringSystemInt32.cs" />
+    <Compile Include="Generated\NotificationsApi.cs" />
+    <Compile Include="Generated\NotificationsApiExtensions.cs" />
+    <Compile Include="Generated\OfferApi.cs" />
+    <Compile Include="Generated\OfferApiExtensions.cs" />
+    <Compile Include="Generated\Office365.cs" />
+    <Compile Include="Generated\Office365Extensions.cs" />
+    <Compile Include="Generated\OfficeAddInApi.cs" />
+    <Compile Include="Generated\OfficeAddInApiExtensions.cs" />
+    <Compile Include="Generated\Onenote.cs" />
+    <Compile Include="Generated\OnenoteExtensions.cs" />
+    <Compile Include="Generated\OrganizationUserAPI.cs" />
+    <Compile Include="Generated\OrganizationUserAPIExtensions.cs" />
+    <Compile Include="Generated\OutcomesApi.cs" />
+    <Compile Include="Generated\OutcomesApiExtensions.cs" />
+    <Compile Include="Generated\PointsApi.cs" />
+    <Compile Include="Generated\PointsApiExtensions.cs" />
+    <Compile Include="Generated\PollApi.cs" />
+    <Compile Include="Generated\PollApiExtensions.cs" />
+    <Compile Include="Generated\PrerequisitesApi.cs" />
+    <Compile Include="Generated\PrerequisitesApiExtensions.cs" />
+    <Compile Include="Generated\QtiInteroperability.cs" />
+    <Compile Include="Generated\QtiInteroperabilityExtensions.cs" />
+    <Compile Include="Generated\QuestionBankApi.cs" />
+    <Compile Include="Generated\QuestionBankApiExtensions.cs" />
+    <Compile Include="Generated\ReflectionApi.cs" />
+    <Compile Include="Generated\ReflectionApiExtensions.cs" />
+    <Compile Include="Generated\RelatedCoursesApi.cs" />
+    <Compile Include="Generated\RelatedCoursesApiExtensions.cs" />
+    <Compile Include="Generated\ReportApi.cs" />
+    <Compile Include="Generated\ReportApiExtensions.cs" />
+    <Compile Include="Generated\RoleManagementApi.cs" />
+    <Compile Include="Generated\RoleManagementApiExtensions.cs" />
+    <Compile Include="Generated\ScheduleVisitApi.cs" />
+    <Compile Include="Generated\ScheduleVisitApiExtensions.cs" />
+    <Compile Include="Generated\SchoolTypeApi.cs" />
+    <Compile Include="Generated\SchoolTypeApiExtensions.cs" />
+    <Compile Include="Generated\SessionApi.cs" />
+    <Compile Include="Generated\SessionApiExtensions.cs" />
+    <Compile Include="Generated\SpaceApi.cs" />
+    <Compile Include="Generated\SpaceApiExtensions.cs" />
+    <Compile Include="Generated\StudentApi.cs" />
+    <Compile Include="Generated\StudentApiExtensions.cs" />
+    <Compile Include="Generated\SubjectApi.cs" />
+    <Compile Include="Generated\SubjectApiExtensions.cs" />
+    <Compile Include="Generated\SystemAdministrationApi.cs" />
+    <Compile Include="Generated\SystemAdministrationApiExtensions.cs" />
+    <Compile Include="Generated\SystemReportsApi.cs" />
+    <Compile Include="Generated\SystemReportsApiExtensions.cs" />
+    <Compile Include="Generated\TagsApi.cs" />
+    <Compile Include="Generated\TagsApiExtensions.cs" />
+    <Compile Include="Generated\Themes.cs" />
+    <Compile Include="Generated\ThemesExtensions.cs" />
+    <Compile Include="Generated\TimeTableApi.cs" />
+    <Compile Include="Generated\TimeTableApiExtensions.cs" />
+    <Compile Include="Generated\ToolConsumerProfileApi.cs" />
+    <Compile Include="Generated\ToolConsumerProfileApiExtensions.cs" />
+    <Compile Include="Generated\TourApi.cs" />
+    <Compile Include="Generated\TourApiExtensions.cs" />
+    <Compile Include="Generated\TrackApi.cs" />
+    <Compile Include="Generated\TrackApiExtensions.cs" />
+    <Compile Include="Generated\TrainingPlanApi.cs" />
+    <Compile Include="Generated\TrainingPlanApiExtensions.cs" />
+    <Compile Include="Generated\UserApi.cs" />
+    <Compile Include="Generated\UserApiExtensions.cs" />
+    <Compile Include="Generated\UserProfileApi.cs" />
+    <Compile Include="Generated\UserProfileApiExtensions.cs" />
+    <Compile Include="Generated\UserProgressApi.cs" />
+    <Compile Include="Generated\UserProgressApiExtensions.cs" />
+    <Compile Include="Generated\UserSettingsApi.cs" />
+    <Compile Include="Generated\UserSettingsApiExtensions.cs" />
+    <Compile Include="Generated\WallApi.cs" />
+    <Compile Include="Generated\WallApiExtensions.cs" />
+    <Compile Include="Pages\ViewSession_Page.cs" />
+    <Compile Include="Pages\AddSession_Page.cs" />
+    <Compile Include="Pages\Login_Page.cs" />
+    <Compile Include="Pages\Random.cs" />
+    <Compile Include="Pages\URLs.cs" />
+    <Compile Include="Tests\_Setup.cs" />
+    <Compile Include="Tests\Delete_Session.cs" />
+    <Compile Include="Tests\Activate_Deactivate_Session.cs" />
+    <Compile Include="Tests\Add_Session.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Selenium.Chrome.WebDriver.2.35\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('..\packages\Selenium.Chrome.WebDriver.2.35\build\Selenium.Chrome.WebDriver.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Selenium.Chrome.WebDriver.2.35\build\Selenium.Chrome.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.Chrome.WebDriver.2.35\build\Selenium.Chrome.WebDriver.targets'))" />
+    <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
